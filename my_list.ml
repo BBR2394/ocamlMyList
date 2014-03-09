@@ -80,3 +80,14 @@ let rec memq param = function
 let rec split = function
 | Empty -> (Empty, Empty)
 | Item((x, y), next) -> let (x2, y2) = split next in (Item(x, x2), Item(y, y2));; 
+
+let rec mem_assoc x = function
+| Empty -> false
+| Item((y, z), next) -> compare y x = 0 || mem_assoc x next;; 
+
+let rec assoc x = function
+| Empty -> raise Not_found
+| Item((a, b), next) -> if a == x
+			then b
+			else assoc x next
+;;
