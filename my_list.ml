@@ -86,7 +86,7 @@ let rec mem_assoc x = function
 | Item((y, z), next) -> compare y x = 0 || mem_assoc x next;; 
 
 let rec assoc x = function
-| Empty -> raise Not_found
+| Empty -> failwith "Not_found"
 | Item((a, b), next) -> if a == x
 			then b
 			else assoc x next
